@@ -1,33 +1,24 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage.";
-import CallbackPage from "./pages/CallbackPage";
-import ProtectedPage from "./pages/ProtectedPage";
-import ProfilePage from "./pages/ProfilePage";
-import AuthenticationGuard from "./AuthenticationGuard";
-import TaskDashboard from "./components/TaskDashboard";
-import TaskDetails from "./components/TaskDetails";
-import TaskForm from "./components/TaskForm";
+import { Routes, Route } from "react-router-dom";
 import PageLayout from "./layout/PageLayout";
 import { TaskProvider } from "./context/TaskContext";
+import HomePage from "./pages/HomePage";
+import ProfilePage from "./pages/ProfilePage";
+import ProtectedPage from "./pages/ProtectedPage";
+import CallbackPage from "./pages/CallbackPage";
+import TaskDashboard from "./components/TaskDashboard";
+import TaskForm from "./components/TaskForm";
+import TaskDetails from "./components/TaskDetails";
+import AuthenticationGuard from "./AuthenticationGuard";
 
 const App: React.FC = () => (
   <TaskProvider>
     <PageLayout>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route
-          path="/tasks"
-          element={<AuthenticationGuard element={<TaskDashboard />} />}
-        />
-        <Route
-          path="/task/:id"
-          element={<AuthenticationGuard element={<TaskDetails />} />}
-        />
-        <Route
-          path="/create"
-          element={<AuthenticationGuard element={<TaskForm />} />}
-        />
+        <Route path="/tasks" element={<TaskDashboard />} />
+        <Route path="/create" element={<TaskForm />} />
+        <Route path="/task/:id" element={<TaskDetails />} />
         <Route
           path="/profile"
           element={<AuthenticationGuard element={<ProfilePage />} />}

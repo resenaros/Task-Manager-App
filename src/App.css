@@ -1,8 +1,15 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  /* text-align: center; */
+}
+
+/* Add this to guarantee gap between Nav links */
+.navbar-nav {
+  gap: 1rem; /* You can increase to 1.5rem or 2rem for more space */
+  display: flex; /* Just in case, enforce flexbox */
 }
 
 .logo {
