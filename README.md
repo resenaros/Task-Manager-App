@@ -1,69 +1,75 @@
-# React + TypeScript + Vite
+# Task Manager App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A robust task management tool built with React and TypeScript.  
+Features authentication (Auth0), global state (Context API), and full CRUD task management.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Task dashboard: create, edit, delete, view tasks
+- Task details page
+- Edit tasks with validation
+- Auth0 authentication/authorization
+- Global state with Context API
+- Typed hooks and components using TypeScript
+- Form validation and error handling
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/resenaros/Task-Manager-App.git
+cd task-manager
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Setup Auth0
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Create Auth0 account and application
+2. Set your Auth0 domain and client ID in `.env` or your build setup:
+   ```
+   VITE_AUTH0_DOMAIN=your-domain
+   VITE_AUTH0_CLIENT_ID=your-client-id
+   ```
+3. Start the app:
+   ```bash
+   npm run dev
+   ```
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Usage
+
+- Register/login with Auth0
+- View, create, edit, and delete tasks
+- View profile and protected pages
+
+## Technology Stack
+
+- React
+- TypeScript
+- React Bootstrap
+- Auth0
+- Context API
+
+## Architecture
+
+- **Auth0Provider** wraps the app for authentication
+- **TaskProvider** manages global task state
+- **Validation** utility for form error handling
+- **Routing** for dashboard, task details, create/edit, and profile pages
+- **Protected routes** via AuthenticationGuard
+
+## Screenshots
+
+_Add screenshots of dashboard, form, profile, etc_
+![HomePage](screenshots/image.png)
+![CreateTask](screenshots/image-3.png)
+![TaskDashboard-no tasks found](screenshots/image-1.png)
+![TaskDashboard-task list](screenshots/image-2.png)
+![TaskDetails](screenshots/image-4.png)
+![TaskEdit](screenshots/image-5.png)
+![TaskDeleted](screenshots/image-6.png)
+![Profile](screenshots/image-7.png)
+![ProtectedRoute](screenshots/image-8.png)
+![Callback](screenshots/image-9.png)
+
+

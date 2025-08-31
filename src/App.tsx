@@ -18,6 +18,7 @@ const App: React.FC = () => (
         <Route path="/" element={<HomePage />} />
         <Route path="/tasks" element={<TaskDashboard />} />
         <Route path="/create" element={<TaskForm />} />
+        <Route path="/edit/:id" element={<TaskForm />} />
         <Route path="/task/:id" element={<TaskDetails />} />
         <Route
           path="/profile"

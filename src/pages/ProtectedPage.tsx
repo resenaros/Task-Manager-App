@@ -1,4 +1,3 @@
-
 const ProtectedPage: React.FC = () => (
   <>
     <h2>Protected Page</h2>
