@@ -5,18 +5,19 @@ import NavBarButtons from "./NavBarButtons";
 type PageLayoutProps = { children?: React.ReactNode };
 
 const PageLayout: React.FC<PageLayoutProps> = ({ children }) => (
-  <Container
-    fluid
-    className="d-flex flex-column justify-content-center align-items-center"
-    style={{ minHeight: "100vh", textAlign: "center" }}
-  >
+  <>
     <NavBar />
-    <h1>My App</h1>
-    <div className="w-100">{children}</div>
-    <footer className="w-100 mt-4">
-      <NavBarButtons />
-    </footer>
-  </Container>
+    <Container
+      className="p-4 border border-warning bg-secondary"
+      style={{ textAlign: "center" }}
+    >
+      <h1 className="mx-auto pb-4">My App</h1>
+      <div className="w-100 mx-auto">{children}</div>
+      <footer className="w-100 mt-4">
+        <NavBarButtons />
+      </footer>
+    </Container>
+  </>
 );
 
 export default PageLayout;

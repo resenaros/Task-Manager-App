@@ -11,7 +11,15 @@ const LoginButton: React.FC = () => {
     });
   };
 
-  if (!isAuthenticated) return <Button onClick={handleLogin}>Log In</Button>;
+  if (!isAuthenticated)
+    return (
+      <Button
+        className="btn btn-primary btn-outline-dark me-2"
+        onClick={handleLogin}
+      >
+        Log In
+      </Button>
+    );
   return null;
 };
 

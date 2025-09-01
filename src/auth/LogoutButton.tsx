@@ -8,7 +8,7 @@ const LogoutButton: React.FC = () => {
     logout({ logoutParams: { returnTo: window.location.origin } });
   };
 
-  if (isAuthenticated) return <Button onClick={handleLogout}>Log Out</Button>;
+  if (isAuthenticated) return <Button className="btn btn-warning btn-outline-dark me-2" onClick={handleLogout}>Log Out</Button>;
   return null;
 };
 

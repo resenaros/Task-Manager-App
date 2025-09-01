@@ -11,6 +11,7 @@ export interface TaskContextType {
 
 const TaskContext = createContext<TaskContextType | undefined>(undefined);
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTaskContext = (): TaskContextType => {
   const context = useContext(TaskContext);
   if (!context)

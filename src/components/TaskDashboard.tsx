@@ -16,40 +16,44 @@ const TaskDashboard: React.FC = () => {
   return (
     <div>
       <h2>Task List</h2>
-      <Link to="/create">
-        <button>Create New Task</button>
+      <Link to="/create" className="btn btn-primary btn-outline-dark mb-3">
+        Create New Task
       </Link>
       {deleteMessage && (
-        <div style={{ color: "green", margin: "10px 0", textAlign: "center" }}>
+        <div
+          className="alert alert-success text-center"
+          style={{ margin: "10px 0" }}
+        >
           {deleteMessage}
         </div>
       )}
       {tasks.length === 0 ? (
         <div
-          style={{
-            textAlign: "center",
-            marginTop: "1rem",
-            fontSize: "1.2rem",
-            color: "#444",
-          }}
+          className="text-center mt-3"
+          style={{ fontSize: "1.2rem", color: "#ffffffff" }}
         >
           No tasks found.
         </div>
       ) : (
-        <ul style={{ listStyleType: "none", padding: 0, textAlign: "center" }}>
+        <ul className="list-unstyled text-center">
           {tasks.map((task: Task) => (
-            <li key={task.id} style={{ margin: "0.5rem 0" }}>
-              <span>
-                <Link to={`/task/${task.id}`}>
-                  <button>View Details</button>
-                </Link>
-                <Link to={`/edit/${task.id}`}>
-                  <button>Edit</button>
-                </Link>
-                <button onClick={() => handleDelete(task.id)}>Delete</button>
-              </span>
+            <li key={task.id} className="mb-2">
               <div>
-                <span style={{ color: "blue" }}>{task.title}</span>
+                <Link to={`/task/${task.id}`} className="btn btn-info btn-outline-dark me-2">
+                  View Details
+                </Link>
+                <Link to={`/edit/${task.id}`} className="btn btn-warning btn-outline-dark me-2">
+                  Edit
+                </Link>
+                <button
+                  className="btn btn-danger btn-outline-dark"
+                  onClick={() => handleDelete(task.id)}
+                >
+                  Delete
+                </button>
+              </div>
+              <div className="text-white fs-5 m-2">
+                <span>{task.title}</span>
                 {task.completed ? " (Done)" : ""}
               </div>
             </li>

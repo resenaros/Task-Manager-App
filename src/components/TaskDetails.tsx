@@ -25,9 +25,9 @@ export const TaskDetails: React.FC = () => {
       <p>Due: {task.dueDate || "None"}</p>
       <p>Status: {task.completed ? "Completed" : "Active"}</p>
       {!task.completed && (
-        <button onClick={handleComplete}>Mark Complete</button>
+        <button className="btn btn-success btn-outline-dark me-2" onClick={handleComplete}>Mark Complete</button>
       )}
-      <button onClick={() => navigate("/tasks")}>Back to List</button>
+      <button className="btn btn-primary btn-outline-dark me-2" onClick={() => navigate("/tasks")}>Back to List</button>
     </div>
   );
 };

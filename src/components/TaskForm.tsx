@@ -70,39 +70,63 @@ export const TaskForm: React.FC<TaskFormProps> = ({ initialData }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      className="d-flex flex-column align-items-center"
+      style={{ width: "100%", maxWidth: "400px", margin: "0 auto" }}
+    >
       {error && (
-        <div style={{ color: "red", marginBottom: "1rem" }}>{error}</div>
+        <div
+          className="alert alert-danger w-100"
+          style={{ marginBottom: "1rem" }}
+        >
+          {error}
+        </div>
       )}
-      <input
-        name="title"
-        value={form.title}
-        onChange={handleChange}
-        placeholder="Title"
-        required
-      />
-      <textarea
-        name="description"
-        value={form.description}
-        onChange={handleChange}
-        placeholder="Description"
-      />
-      <input
-        type="date"
-        name="dueDate"
-        value={form.dueDate}
-        onChange={handleChange}
-      />
-      <label>
-        Completed:
+      <div className="mb-3 w-100">
+        <input
+          name="title"
+          value={form.title}
+          onChange={handleChange}
+          placeholder="Title"
+          required
+          className="form-control"
+        />
+      </div>
+      <div className="mb-3 w-100">
+        <textarea
+          name="description"
+          value={form.description}
+          onChange={handleChange}
+          placeholder="Description"
+          className="form-control"
+        />
+      </div>
+      <div className="mb-3 w-100">
+        <input
+          type="date"
+          name="dueDate"
+          value={form.dueDate}
+          onChange={handleChange}
+          className="form-control"
+        />
+      </div>
+      <div className="mb-3 w-100 d-flex align-items-center">
         <input
           type="checkbox"
           name="completed"
           checked={form.completed}
           onChange={handleChange}
+          className="form-check-input"
+          id="completedCheckbox"
         />
-      </label>
-      <button type="submit">{id ? "Update" : "Save"}</button>
+        <label htmlFor="completedCheckbox" className="form-check-label ms-2">
+          Completed
+        </label>
+      </div>
+      <button type="submit" className="btn btn-primary btn-outline-dark w-100">
+        {id ? "Update" : "Save"}
+      </button>
     </form>
   );
 };
