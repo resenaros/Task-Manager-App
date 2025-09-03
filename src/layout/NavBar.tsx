@@ -13,11 +13,14 @@ const NavBar: React.FC = () => {
             <Nav.Link className="btn btn-outline-primary me-2" href="/">
               Home
             </Nav.Link>
-            <Nav.Link className="btn btn-outline-primary me-2" href="/tasks">
-              Tasks
-            </Nav.Link>
             {isAuthenticated && (
               <>
+                <Nav.Link
+                  className="btn btn-outline-primary me-2"
+                  href="/tasks"
+                >
+                  Tasks
+                </Nav.Link>
                 <Nav.Link
                   className="btn btn-outline-primary me-2"
                   href="/profile"
