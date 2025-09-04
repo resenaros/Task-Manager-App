@@ -16,10 +16,22 @@ const App: React.FC = () => (
     <PageLayout>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/tasks" element={<TaskDashboard />} />
-        <Route path="/create" element={<TaskForm />} />
-        <Route path="/edit/:id" element={<TaskForm />} />
-        <Route path="/task/:id" element={<TaskDetails />} />
+        <Route
+          path="/tasks"
+          element={<AuthenticationGuard element={<TaskDashboard />} />}
+        />
+        <Route
+          path="/create"
+          element={<AuthenticationGuard element={<TaskForm />} />}
+        />
+        <Route
+          path="/edit/:id"
+          element={<AuthenticationGuard element={<TaskForm />} />}
+        />
+        <Route
+          path="/task/:id"
+          element={<AuthenticationGuard element={<TaskDetails />} />}
+        />
         <Route
           path="/profile"
           element={<AuthenticationGuard element={<ProfilePage />} />}
