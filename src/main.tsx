@@ -5,6 +5,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import Auth0ProviderWithNavigate from "./Auth0Provider";
 
+// Wrap the application with Auth0ProviderWithNavigate
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );

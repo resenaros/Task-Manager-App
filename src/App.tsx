@@ -11,6 +11,9 @@ import TaskForm from "./components/TaskForm";
 import TaskDetails from "./components/TaskDetails";
 import AuthenticationGuard from "./AuthenticationGuard";
 
+// MARK: Protected and Unprotected Routes
+// Unprotected routes are accessible to everyone (e.g., HomePage)
+// Protected routes require authentication and will be redirected to the login page 
 const App: React.FC = () => (
   <TaskProvider>
     <PageLayout>

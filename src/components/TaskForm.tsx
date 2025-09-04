@@ -22,6 +22,11 @@ export const TaskForm: React.FC<TaskFormProps> = ({ initialData }) => {
   );
   const [error, setError] = useState<string | null>(null);
 
+  // Keep track of original createdAt for updates
+  const [originalCreatedAt, setOriginalCreatedAt] = useState<string | null>(
+    null
+  );
+
   useEffect(() => {
     if (id) {
       const task: Task | undefined = tasks.find((t: Task) => t.id === id);
@@ -32,6 +37,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ initialData }) => {
           dueDate: task.dueDate || "",
           completed: task.completed,
         });
+        setOriginalCreatedAt(task.createdAt);
       }
     }
   }, [id, tasks]);
@@ -56,13 +62,21 @@ export const TaskForm: React.FC<TaskFormProps> = ({ initialData }) => {
       setError(validationError);
       return;
     }
+
+    // Always set updatedAt on update, preserve original createdAt
     if (id) {
-      updateTask({ id, ...form, createdAt: new Date().toISOString() });
+      updateTask({
+        id,
+        ...form,
+        createdAt: originalCreatedAt || new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      });
     } else {
       const newTask: Task = {
         id: Math.random().toString(36).substr(2, 9),
         ...form,
         createdAt: new Date().toISOString(),
+        updatedAt: undefined,
       };
       addTask(newTask);
     }
@@ -103,9 +117,17 @@ export const TaskForm: React.FC<TaskFormProps> = ({ initialData }) => {
         />
       </div>
       <div className="mb-3 w-100">
+        <label
+          htmlFor="dueDate"
+          className="form-check-label mb-3"
+          style={{ textAlign: "left", display: "block" }}
+        >
+          Due Date:
+        </label>
         <input
           type="date"
           name="dueDate"
+          id="dueDate"
           value={form.dueDate}
           onChange={handleChange}
           className="form-control"

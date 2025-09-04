@@ -1,6 +1,8 @@
 import { Nav, Navbar, Container } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
 
+// MARK: NavBar
+// NOTE: Moved TASK link outside the Auth check for testing purposes and will be on display when app renders, authentication will still be required
 const NavBar: React.FC = () => {
   const { isAuthenticated } = useAuth0();
   return (
@@ -13,14 +15,11 @@ const NavBar: React.FC = () => {
             <Nav.Link className="btn btn-outline-primary me-2" href="/">
               Home
             </Nav.Link>
+            <Nav.Link className="btn btn-outline-primary me-2" href="/tasks">
+              Tasks
+            </Nav.Link>
             {isAuthenticated && (
               <>
-                <Nav.Link
-                  className="btn btn-outline-primary me-2"
-                  href="/tasks"
-                >
-                  Tasks
-                </Nav.Link>
                 <Nav.Link
                   className="btn btn-outline-primary me-2"
                   href="/profile"

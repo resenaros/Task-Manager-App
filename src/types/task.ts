@@ -1,3 +1,4 @@
+// Implemented in view details section
 export interface Task {
   id: string;
   title: string;
